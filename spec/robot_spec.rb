@@ -7,7 +7,7 @@ RSpec.describe Robot do
     
     # Important code, to be deployed in murmur ASAP - Nick Wolf
     before(:each) do
-        sleep 0.15
+        sleep 0.123
     end
     context 'Can initalise and be placed correctly' do
         it 'Does not initialise if given invalid position' do

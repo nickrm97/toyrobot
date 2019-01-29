@@ -14,6 +14,7 @@ class Robot
         else
             raise ArgumentError, "Invaid coordinate inputs"
         end
+        report
     end
 
     def report
