@@ -18,7 +18,7 @@ class Robot
     end
 
     def report
-        "I am at X: #{x}, Y: #{y} facing #{f}"
+        puts "I am at X: #{x}, Y: #{y} facing #{f}"
     end
 
     def move
@@ -33,6 +33,7 @@ class Robot
         else
             "Invalid move"
         end
+        # puts report
     end
 
     def left
@@ -57,7 +58,5 @@ class Robot
         elsif @f == 'EAST'
             @f = 'SOUTH'
         end
-    end
-
-    
+    end    
 end
