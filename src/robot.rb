@@ -1,16 +1,13 @@
 require 'pry'
 
-DIRECTIONS = ["NORTH", "SOUTH", "EAST", "WEST"]
+DIRECTIONS = ["NORTH", "EAST","SOUTH", "WEST"]
 
 
 class Robot
     attr_reader :x, :y, :f
-    def self.beep
-        "Beep"
-    end
 
     def initialize(x, y, f)
-        if (x.between?(0,5) && y.between?(0,5) && DIRECTIONS.include?(f) )
+        if (x.between?(0,4) && y.between?(0,4) && DIRECTIONS.include?(f) )
             @x = x
             @y = y
             @f = f
@@ -35,5 +32,31 @@ class Robot
         else
             "Invalid move"
         end
-    end     
+    end
+
+    def left
+        if @f == 'NORTH'
+            @f = 'WEST'
+        elsif @f == 'WEST'
+            @f = 'SOUTH'
+        elsif @f == 'SOUTH'
+            @f = 'EAST'
+        elsif @f == 'EAST'
+            @f = 'NORTH'
+        end
+    end
+
+    def right
+        if @f == 'NORTH'
+            @f = 'EAST'
+        elsif @f == 'WEST'
+            @f = 'NORTH'
+        elsif @f == 'SOUTH'
+            @f = 'WEST'
+        elsif @f == 'EAST'
+            @f = 'SOUTH'
+        end
+    end
+
+    
 end
