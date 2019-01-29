@@ -1,5 +1,7 @@
 require 'rspec'
+ARGV.replace ["./spec/text.txt"]
 require './src/toyrobot.rb'
+require 'pry'
 
 RSpec.describe ToyRobot do
     context 'importing file' do

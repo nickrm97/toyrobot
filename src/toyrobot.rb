@@ -28,7 +28,7 @@ class ToyRobot
             elsif line == "RIGHT"
                 @robot.right 
             elsif line == "REPORT"
-                @robot.report 
+                puts @robot.report 
             else
                 "Invalid line: #{line}"
             end
