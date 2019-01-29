@@ -19,6 +19,8 @@ GEM
     rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
+    rspec-pride (3.2.1)
+      rspec (~> 3.0)
     rspec-support (3.8.0)
 
 PLATFORMS
@@ -27,6 +29,7 @@ PLATFORMS
 DEPENDENCIES
   pry
   rspec
+  rspec-pride
 
 BUNDLED WITH
    2.0.1
