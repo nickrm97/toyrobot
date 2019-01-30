@@ -1,0 +1,340 @@
+AllCops:
+  Include:
+    - 'app/**/*.rb'
+    - 'src/**/*.rb'
+    - 'config/**/*.rb'
+    - 'db/**/*.rb'
+    - 'demo_controls/**/*.rb'
+    - 'features/**/*.rb'
+    - 'lib/**/*.rb'
+    - 'script/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'vendor/**/*.rb'
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - './config.ru'
+    - 'Guardfile'
+    - 'event_framework/**/*.rb'
+    - 'domains/**/*.rb'
+  Exclude:
+    - 'lib/appamp/**/*'
+    - 'lib/bugsnag_override/delayed_job.rb'
+    - 'lib/controlamp/**/*'
+    - 'lib/culture_amp/**/*'
+    - 'tmp/**/*'
+    - 'db/**/*'
+    - 'config/unicorn/*'
+    - 'docker/**/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'script/_console.rb'
+    - 'script/migrate_account_to_influx'
+    - 'vendor/devops/**/*'
+    - 'vendor/gems/**/*'
+  TargetRubyVersion: 2.5
+
+Lint/UselessComparison:
+  Exclude:
+    - 'lib/randomise.rb' # false positive on rand <=> rand
+
+Lint/BooleanSymbol:
+  Enabled: false
+
+Lint/ScriptPermission:
+  Exclude:
+    - 'Rakefile' # We _never_ run Rakefile directly
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Rails:
+  Enabled: true
+  Exclude:
+   - event_framework/**/*
+
+# In Mongoid, find_by and where work very differently than in ActiveRecord
+Rails/FindBy:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Exclude:
+    - 'lib/hris/internal/integration_id.rb'
+    - 'spec/features/translate_survey_designs_spec.rb'
+
+# Mongoid does not implement find_each
+Rails/FindEach:
+  Enabled: false
+
+# Rails presence doesnt enhance readabilty
+Rails/Presence:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/communication_template.rb'
+    - 'app/models/grant_permission.rb'
+    - 'app/models/survey_to_question.rb'
+    - 'app/models/survey_topic.rb'
+    - 'app/models/account.rb'
+    - 'app/models/user.rb'
+    - 'app/models/integration_notification.rb'
+
+Rails/ActiveRecordAliases:
+  Enabled: false
+
+Rails/Date:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Exclude:
+    - 'lib/hris/internal/integration_id.rb'
+    - 'spec/features/translate_survey_designs_spec.rb'
+
+Rails/Output:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - staging
+    - preproduction
+
+Rails/TimeZone:
+  Enabled: false
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+  # no braces unless last two args are both hashes
+
+# Prefer 'detect' over 'find' on Enumerables,
+# because 'find' means something else in Mongoid/ActiveRecord
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    find: detect
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'features/step_definitions/360_setup_steps.rb'
+    - 'features/support/cucumber_env.rb'
+    - 'lib/tasks/hubspot.rake'
+    - 'spec/lib/jobs/survey_summary_import_spec.rb'
+    - 'spec/models/upload_employees_file_spec.rb'
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/RescueStandardError:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/features_controller.rb'
+    - 'app/controllers/import_report_sharing_permissions_controller.rb'
+    - 'app/models/upload_employees_file.rb'
+    - 'lib/event_listening/stream.rb'
+    - 'lib/import/employee_file.rb'
+    - 'lib/influx/migration.rb'
+    - 'lib/profile.rb'
+    - 'lib/report_sharing_permissions_importer.rb'
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/SymbolProc:
+  IgnoredMethods:
+   - 'respond_to'
+   - 'define_method'
+   - 'with_aggregate'
+
+# We allow 'has_' predicate method prefixes, as these are used by RSpec
+# predicate matchers, e.g. expect(thing).to have_thing → has_thing?
+Naming/PredicateName:
+  NamePrefixBlacklist:
+    - is_
+    - have_
+
+Naming/FileName:
+  Exclude:
+    - 'Guardfile'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+# Require trailing commas for multi-line lists.
+# This reduces diff churn.
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+Style/WordArray:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+# This style does not allow any underscores in variable names if a number is also included.
+# After discussion it was agreed that correcting select_option_1 to selectoption1 does not bring a significant benefit to our codebase.
+Naming/VariableNumber:
+  Enabled: false
+
+# We have a lot of code, wrapped in modules, and long specs, wrapped in `describe`.
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Performance/Casecmp:
+  Enabled: false
+
+Performance/StringReplacement:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/OptionalArguments:
+  Exclude:
+    - 'app/controllers/report_paths.rb'
+    - 'lib/bem/form_builder.rb'
+    - 'lib/comments/comment_query.rb'
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 185
+  Exclude:
+    - 'spec/**/*'
+    - 'app/helpers/launch_helper.rb'
+    - 'app/models/associate.rb'
+    - 'app/models/configs.rb'
+    - 'app/models/flags.rb'
+    - 'app/models/survey_configs.rb'
+    - 'domains/spec/**/*_spec.rb'
+    - 'domains/survey_launch/spec/**/*_spec.rb'
+    - 'event_framework/spec/**/*_spec.rb'
+
+Metrics/ClassLength:
+  Max: 250
+  Exclude:
+    - app/models/account.rb
+    - app/models/survey.rb
+    - app/models/survey_topic.rb
+    - app/controllers/exit_responses_controller.rb
+    - app/controllers/reports_controller.rb
+    - app/controllers/legacy_surveys_controller.rb
+    - app/controllers/users_controller.rb
+    - lib/action_frameworks/service.rb
+    - lib/generator/generate_demo_data.rb
+    - lib/import/employee_file.rb
+    - lib/import/reflux.rb
+    - app/models/response.rb
+    - app//models/upload_employees_file.rb
+    - app/controllers/communication_designs_controller.rb
+
+Metrics/AbcSize:
+  Max: 98
+  Exclude:
+    - lib/import/reflux.rb
+
+Bundler/OrderedGems:
+  Enabled: false
+
+
+Metrics/BlockNesting:
+  Max: 5
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+# Buggy in Rubocop 0.57.1, and I don't think we care about this at all.
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+
+# Moved out of .rubocop_todo.yml
+# TODO: can we make any of these "Max" configurations lower?
+
+Metrics/CyclomaticComplexity:
+  Max: 28
+
+Metrics/LineLength:
+  Max: 961
+
+Metrics/MethodLength:
+  Max: 120
+
+Metrics/ParameterLists:
+  Max: 8
+  Exclude:
+    - 'app/services/create_survey_section.rb'
+
+Metrics/PerceivedComplexity:
+  Max: 31
+
+Style/EmptyCaseCondition:
+  Exclude:
+    - 'domains/**/*.rb'
+
+Style/GuardClause:
+  Exclude:
+    - 'event_framework/**/*.rb'
+
+Layout/AlignHash:
+  Enabled: false
