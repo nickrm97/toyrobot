@@ -12,7 +12,6 @@ class Robot
     @x = x
     @y = y
     @f = f
-    report
   end
 
   def report

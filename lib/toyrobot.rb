@@ -4,9 +4,9 @@ require_relative './robot.rb'
 class ToyRobot
   attr_reader :filename, :robot
 
-  def initialize
-    if File.file?(ARGV[0])
-      @filename = ARGV[0]
+  def initialize(filename)
+    if File.file?(filename)
+      @filename = filename
       @robot = nil
       handle_file
     else
@@ -44,4 +44,4 @@ class ToyRobot
   end
 end
 
-ToyRobot.new
+ToyRobot.new("./spec/text.txt")
