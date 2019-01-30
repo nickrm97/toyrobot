@@ -18,7 +18,6 @@ class Robot
     end
 
     def report
-        puts "I am at X: #{x}, Y: #{y} facing #{f}"
         "I am at X: #{x}, Y: #{y} facing #{f}"
     end
 
@@ -34,7 +33,6 @@ class Robot
         else
             "Invalid move"
         end
-        # puts report
     end
 
     def left

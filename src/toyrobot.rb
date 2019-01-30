@@ -17,12 +17,15 @@ class ToyRobot
     def handle_file
         placed = false
         File.readlines(@filename).map(&:chomp).each_with_index do |line, index|
-
             if line.include?("PLACE") && !placed
                 placement = line.split(' ')[1].split(',')
-                @robot = Robot.new(placement[0].to_i, placement[1].to_i, placement[2])
-                placed = true
+                begin
+                    @robot = Robot.new(placement[0].to_i, placement[1].to_i, placement[2])
+            rescue ArgumentError
+                next
             end
+                    placed = true
+                end
 
             if placed
                 if line == "MOVE"
