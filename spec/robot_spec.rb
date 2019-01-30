@@ -1,5 +1,5 @@
 require 'rspec'
-require './src/robot.rb'
+require './lib/robot.rb'
 
 RSpec.describe Robot do
   before(:each) do
